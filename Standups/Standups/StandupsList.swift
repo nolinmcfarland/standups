@@ -23,7 +23,14 @@ struct StandupsList: View {
             List {
                 ForEach(model.standups) { standup in
                     CardView(standup: standup)
-                        .listRowBackground(standup.theme.mainColor)
+                        .listRowBackground(
+                            standup.theme.mainColor
+                                .overlay(LinearGradient(
+                                    colors: [.white.opacity(0.3), .clear],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ))
+                        )
                 }
             }
             .navigationTitle("Daily Standups")
