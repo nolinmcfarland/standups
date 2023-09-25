@@ -28,17 +28,32 @@ struct StandupsListView: View {
                         )
                 }
             }
+            .navigationTitle("Daily Standups")
             .toolbar {
                 Button(action: self.viewModel.addStandupButtonTapped) {
                     Image(systemName: "plus")
                 }
             }
-            .navigationTitle("Daily Standups")
             .sheet(
                 unwrapping: self.$viewModel.destination,
                 case: /StandupsListViewModel.Destination.add
             ) { $standup in
-                EditStandupView(standup: $standup)
+                NavigationStack {
+                    EditStandupView(standup: $standup)
+                        .navigationTitle("New Standup")
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Dismiss") {
+                                    self.viewModel.dismissAddStandupButtonTapped()
+                                }
+                            }
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Add") {
+                                    self.viewModel.confirmAddStandupButtonTapped()
+                                }
+                            }
+                        }
+                }
             }
         }
     }

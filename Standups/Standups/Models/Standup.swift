@@ -11,7 +11,7 @@ import Tagged
 struct Standup: Identifiable, Equatable, Codable {
     let id: Tagged<Self, UUID>
     var attendees = [Attendee]()
-    var duration: Duration = .seconds(60 * 5)
+    var duration = Duration.seconds(60 * 5)
     var meetings = [Meeting]()
     var theme: Theme = .mint
     var title = ""
