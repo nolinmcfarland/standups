@@ -12,6 +12,11 @@
 		5C04AA4B2AC112B70007DA81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04AA4A2AC112B70007DA81 /* Preview Assets.xcassets */; };
 		5C04AA552AC112B70007DA81 /* StandupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA542AC112B70007DA81 /* StandupsTests.swift */; };
 		5C04AA6E2AC1138B0007DA81 /* StandupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */; };
+		5C04AA722AC115180007DA81 /* Standup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA712AC115180007DA81 /* Standup.swift */; };
+		5C04AA752AC1157A0007DA81 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = 5C04AA742AC1157A0007DA81 /* Tagged */; };
+		5C04AA772AC11BDE0007DA81 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA762AC11BDE0007DA81 /* Attendee.swift */; };
+		5C04AA792AC11BEF0007DA81 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA782AC11BEF0007DA81 /* Meeting.swift */; };
+		5C04AA7B2AC11C050007DA81 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA7A2AC11C050007DA81 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +37,10 @@
 		5C04AA502AC112B70007DA81 /* StandupsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandupsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04AA542AC112B70007DA81 /* StandupsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsTests.swift; sourceTree = "<group>"; };
 		5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsList.swift; sourceTree = "<group>"; };
+		5C04AA712AC115180007DA81 /* Standup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standup.swift; sourceTree = "<group>"; };
+		5C04AA762AC11BDE0007DA81 /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
+		5C04AA782AC11BEF0007DA81 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		5C04AA7A2AC11C050007DA81 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04AA752AC1157A0007DA81 /* Tagged in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +83,7 @@
 		5C04AA422AC112B60007DA81 /* Standups */ = {
 			isa = PBXGroup;
 			children = (
+				5C04AA702AC114FC0007DA81 /* Models */,
 				5C04AA432AC112B60007DA81 /* StandupsApp.swift */,
 				5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */,
 				5C04AA472AC112B70007DA81 /* Assets.xcassets */,
@@ -97,6 +108,17 @@
 			path = StandupsTests;
 			sourceTree = "<group>";
 		};
+		5C04AA702AC114FC0007DA81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C04AA712AC115180007DA81 /* Standup.swift */,
+				5C04AA762AC11BDE0007DA81 /* Attendee.swift */,
+				5C04AA782AC11BEF0007DA81 /* Meeting.swift */,
+				5C04AA7A2AC11C050007DA81 /* Theme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,6 +135,9 @@
 			dependencies = (
 			);
 			name = Standups;
+			packageProductDependencies = (
+				5C04AA742AC1157A0007DA81 /* Tagged */,
+			);
 			productName = Standups;
 			productReference = 5C04AA402AC112B60007DA81 /* Standups.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +188,9 @@
 				Base,
 			);
 			mainGroup = 5C04AA372AC112B60007DA81;
+			packageReferences = (
+				5C04AA732AC1157A0007DA81 /* XCRemoteSwiftPackageReference "swift-tagged" */,
+			);
 			productRefGroup = 5C04AA412AC112B60007DA81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -197,8 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04AA792AC11BEF0007DA81 /* Meeting.swift in Sources */,
 				5C04AA442AC112B60007DA81 /* StandupsApp.swift in Sources */,
 				5C04AA6E2AC1138B0007DA81 /* StandupsList.swift in Sources */,
+				5C04AA7B2AC11C050007DA81 /* Theme.swift in Sources */,
+				5C04AA722AC115180007DA81 /* Standup.swift in Sources */,
+				5C04AA772AC11BDE0007DA81 /* Attendee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +503,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C04AA732AC1157A0007DA81 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C04AA742AC1157A0007DA81 /* Tagged */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C04AA732AC1157A0007DA81 /* XCRemoteSwiftPackageReference "swift-tagged" */;
+			productName = Tagged;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C04AA382AC112B60007DA81 /* Project object */;
 }
