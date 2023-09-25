@@ -6,34 +6,40 @@
 //
 
 import SwiftUI
+import SwiftUINavigation
 
-final class StandupsListModel: ObservableObject {
-    @Published var standups: [Standup]
-
-    init(standups: [Standup] = []) {
-        self.standups = standups
-    }
-}
-
-struct StandupsList: View {
-    @ObservedObject var model: StandupsListModel
+struct StandupsListView: View {
+    @ObservedObject var viewModel: StandupsListViewModel
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(model.standups) { standup in
+                ForEach(self.viewModel.standups) { standup in
                     CardView(standup: standup)
                         .listRowBackground(
                             standup.theme.mainColor
-                                .overlay(LinearGradient(
-                                    colors: [.white.opacity(0.3), .clear],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ))
+                                .overlay(
+                                    LinearGradient(
+                                        colors: [.white.opacity(0.3), .clear],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
                         )
                 }
             }
+            .toolbar {
+                Button(action: self.viewModel.addStandupButtonTapped) {
+                    Image(systemName: "plus")
+                }
+            }
             .navigationTitle("Daily Standups")
+            .sheet(
+                unwrapping: self.$viewModel.destination,
+                case: /StandupsListViewModel.Destination.add
+            ) { $standup in
+                EditStandupView(standup: $standup)
+            }
         }
     }
 }
@@ -73,5 +79,5 @@ extension LabelStyle where Self == TrailingIconLabelStyle {
 }
 
 #Preview {
-    StandupsList(model: StandupsListModel(standups: [.mock]))
+    StandupsListView(viewModel: StandupsListViewModel(standups: [.mock]))
 }

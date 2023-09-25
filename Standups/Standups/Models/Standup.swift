@@ -1,6 +1,6 @@
 //
 //  Standup.swift
-//  Standups
+//  Standups 
 //
 //  Created by Nolin McFarland on 9/24/23.
 //
@@ -17,7 +17,7 @@ struct Standup: Identifiable, Equatable, Codable {
     var title = ""
 
     var durationPerAttendee: Duration {
-        duration / attendees.count
+        self.duration / self.attendees.count
     }
 }
 

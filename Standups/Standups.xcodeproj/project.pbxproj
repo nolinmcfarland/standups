@@ -11,12 +11,15 @@
 		5C04AA482AC112B70007DA81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04AA472AC112B70007DA81 /* Assets.xcassets */; };
 		5C04AA4B2AC112B70007DA81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04AA4A2AC112B70007DA81 /* Preview Assets.xcassets */; };
 		5C04AA552AC112B70007DA81 /* StandupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA542AC112B70007DA81 /* StandupsTests.swift */; };
-		5C04AA6E2AC1138B0007DA81 /* StandupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */; };
+		5C04AA6E2AC1138B0007DA81 /* StandupsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA6D2AC1138B0007DA81 /* StandupsListView.swift */; };
 		5C04AA722AC115180007DA81 /* Standup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA712AC115180007DA81 /* Standup.swift */; };
 		5C04AA752AC1157A0007DA81 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = 5C04AA742AC1157A0007DA81 /* Tagged */; };
 		5C04AA772AC11BDE0007DA81 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA762AC11BDE0007DA81 /* Attendee.swift */; };
 		5C04AA792AC11BEF0007DA81 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA782AC11BEF0007DA81 /* Meeting.swift */; };
 		5C04AA7B2AC11C050007DA81 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA7A2AC11C050007DA81 /* Theme.swift */; };
+		5C04AA7F2AC1ACE00007DA81 /* StandupsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */; };
+		5C04AA822AC1B09C0007DA81 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5C04AA812AC1B09C0007DA81 /* SwiftUINavigation */; };
+		5C04AA842AC1B1F40007DA81 /* EditStandupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +39,13 @@
 		5C04AA4A2AC112B70007DA81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C04AA502AC112B70007DA81 /* StandupsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandupsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04AA542AC112B70007DA81 /* StandupsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsTests.swift; sourceTree = "<group>"; };
-		5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsList.swift; sourceTree = "<group>"; };
+		5C04AA6D2AC1138B0007DA81 /* StandupsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsListView.swift; sourceTree = "<group>"; };
 		5C04AA712AC115180007DA81 /* Standup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standup.swift; sourceTree = "<group>"; };
 		5C04AA762AC11BDE0007DA81 /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		5C04AA782AC11BEF0007DA81 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		5C04AA7A2AC11C050007DA81 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsListViewModel.swift; sourceTree = "<group>"; };
+		5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04AA822AC1B09C0007DA81 /* SwiftUINavigation in Frameworks */,
 				5C04AA752AC1157A0007DA81 /* Tagged in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,9 +89,10 @@
 		5C04AA422AC112B60007DA81 /* Standups */ = {
 			isa = PBXGroup;
 			children = (
+				5C04AA7D2AC1ACD10007DA81 /* ViewModels */,
+				5C04AA7C2AC1ACCD0007DA81 /* Views */,
 				5C04AA702AC114FC0007DA81 /* Models */,
 				5C04AA432AC112B60007DA81 /* StandupsApp.swift */,
-				5C04AA6D2AC1138B0007DA81 /* StandupsList.swift */,
 				5C04AA472AC112B70007DA81 /* Assets.xcassets */,
 				5C04AA492AC112B70007DA81 /* Preview Content */,
 			);
@@ -119,6 +126,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5C04AA7C2AC1ACCD0007DA81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C04AA6D2AC1138B0007DA81 /* StandupsListView.swift */,
+				5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C04AA7D2AC1ACD10007DA81 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +161,7 @@
 			name = Standups;
 			packageProductDependencies = (
 				5C04AA742AC1157A0007DA81 /* Tagged */,
+				5C04AA812AC1B09C0007DA81 /* SwiftUINavigation */,
 			);
 			productName = Standups;
 			productReference = 5C04AA402AC112B60007DA81 /* Standups.app */;
@@ -190,6 +215,7 @@
 			mainGroup = 5C04AA372AC112B60007DA81;
 			packageReferences = (
 				5C04AA732AC1157A0007DA81 /* XCRemoteSwiftPackageReference "swift-tagged" */,
+				5C04AA802AC1B09C0007DA81 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 			);
 			productRefGroup = 5C04AA412AC112B60007DA81 /* Products */;
 			projectDirPath = "";
@@ -225,9 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04AA842AC1B1F40007DA81 /* EditStandupView.swift in Sources */,
 				5C04AA792AC11BEF0007DA81 /* Meeting.swift in Sources */,
 				5C04AA442AC112B60007DA81 /* StandupsApp.swift in Sources */,
-				5C04AA6E2AC1138B0007DA81 /* StandupsList.swift in Sources */,
+				5C04AA7F2AC1ACE00007DA81 /* StandupsListViewModel.swift in Sources */,
+				5C04AA6E2AC1138B0007DA81 /* StandupsListView.swift in Sources */,
 				5C04AA7B2AC11C050007DA81 /* Theme.swift in Sources */,
 				5C04AA722AC115180007DA81 /* Standup.swift in Sources */,
 				5C04AA772AC11BDE0007DA81 /* Attendee.swift in Sources */,
@@ -513,6 +541,14 @@
 				minimumVersion = 0.10.0;
 			};
 		};
+		5C04AA802AC1B09C0007DA81 /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +556,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C04AA732AC1157A0007DA81 /* XCRemoteSwiftPackageReference "swift-tagged" */;
 			productName = Tagged;
+		};
+		5C04AA812AC1B09C0007DA81 /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C04AA802AC1B09C0007DA81 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			productName = SwiftUINavigation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
