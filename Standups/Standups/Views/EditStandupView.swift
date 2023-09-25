@@ -9,12 +9,19 @@ import SwiftUI
 import SwiftUINavigation
 
 struct EditStandupView: View {
+    enum Field: Hashable {
+        case attendee(Attendee.ID)
+        case title
+    }
+
+    @FocusState var focus: Field?
     @Binding var standup: Standup
 
     var body: some View {
         Form {
             Section {
                 TextField("Title", text: self.$standup.title)
+                    .focused(self.$focus, equals: .title)
                 HStack {
                     Slider(value: self.$standup.duration.seconds, in: 5...30, step: 1) {
                         Text("Length")
@@ -29,6 +36,7 @@ struct EditStandupView: View {
             Section {
                 ForEach(self.$standup.attendees) { $attendee in
                     TextField("Name", text: $attendee.name)
+                        .focused(self.$focus, equals: .attendee(attendee.id))
                 }
                 .onDelete { indices in
                     self.standup.attendees.remove(atOffsets: indices)
@@ -37,11 +45,12 @@ struct EditStandupView: View {
                             Attendee(id: Attendee.ID(UUID()), name: "")
                         )
                     }
+                    self.focus = .attendee(self.standup.attendees[indices.first!].id)
                 }
                 Button("New attendee") {
-                    self.standup.attendees.append(
-                        Attendee(id: Attendee.ID(UUID()), name: "")
-                    )
+                    let attendee = Attendee(id: Attendee.ID(UUID()), name: "")
+                    self.standup.attendees.append(attendee)
+                    self.focus = .attendee(attendee.id)
                 }
             } header: {
                 Text("Attendees")
@@ -53,6 +62,7 @@ struct EditStandupView: View {
                     Attendee(id: Attendee.ID(UUID()), name: "")
                 )
             }
+            self.focus = .title
         }
     }
 }
