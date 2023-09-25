@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C04AA442AC112B60007DA81 /* StandupsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA432AC112B60007DA81 /* StandupsApp.swift */; };
-		5C04AA462AC112B60007DA81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA452AC112B60007DA81 /* ContentView.swift */; };
 		5C04AA482AC112B70007DA81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04AA472AC112B70007DA81 /* Assets.xcassets */; };
 		5C04AA4B2AC112B70007DA81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04AA4A2AC112B70007DA81 /* Preview Assets.xcassets */; };
 		5C04AA552AC112B70007DA81 /* StandupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA542AC112B70007DA81 /* StandupsTests.swift */; };
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		5C04AA402AC112B60007DA81 /* Standups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Standups.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04AA432AC112B60007DA81 /* StandupsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsApp.swift; sourceTree = "<group>"; };
-		5C04AA452AC112B60007DA81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C04AA472AC112B70007DA81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C04AA4A2AC112B70007DA81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C04AA502AC112B70007DA81 /* StandupsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandupsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				5C04AA432AC112B60007DA81 /* StandupsApp.swift */,
-				5C04AA452AC112B60007DA81 /* ContentView.swift */,
 				5C04AA472AC112B70007DA81 /* Assets.xcassets */,
 				5C04AA492AC112B70007DA81 /* Preview Content */,
 			);
@@ -197,7 +194,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C04AA462AC112B60007DA81 /* ContentView.swift in Sources */,
 				5C04AA442AC112B60007DA81 /* StandupsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
