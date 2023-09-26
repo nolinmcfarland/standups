@@ -8,62 +8,81 @@
 import SwiftUI
 import SwiftUINavigation
 
+final class EditStandupViewModel: ObservableObject {
+    @Published var focus: EditStandupView.Field?
+    @Published var standup: Standup
+    
+    init(
+        focus: EditStandupView.Field? = .title,
+        standup: Standup
+    ) {
+        self.focus = focus
+        self.standup = standup
+        
+        if self.standup.attendees.isEmpty {
+            self.standup.attendees.append(
+                Attendee(id: Attendee.ID(UUID()), name: "")
+            )
+        }
+    }
+    
+    func newAttendeeButtonTapped() {
+        let attendee = Attendee(id: Attendee.ID(UUID()), name: "")
+        self.standup.attendees.append(attendee)
+        self.focus = .attendee(attendee.id)
+    }
+    
+    func deleteAttendee(atOffsets indices: IndexSet) {
+        self.standup.attendees.remove(atOffsets: indices)
+        if self.standup.attendees.isEmpty {
+            self.standup.attendees.append(
+                Attendee(id: Attendee.ID(UUID()), name: "")
+            )
+        }
+        self.focus = .attendee(self.standup.attendees[indices.first!].id)
+    }
+}
+
+
 struct EditStandupView: View {
     enum Field: Hashable {
         case attendee(Attendee.ID)
         case title
     }
 
+    @ObservedObject var viewModel: EditStandupViewModel
     @FocusState var focus: Field?
-    @Binding var standup: Standup
 
     var body: some View {
         Form {
             Section {
-                TextField("Title", text: self.$standup.title)
+                TextField("Title", text: self.$viewModel.standup.title)
                     .focused(self.$focus, equals: .title)
                 HStack {
-                    Slider(value: self.$standup.duration.seconds, in: 5...30, step: 1) {
+                    Slider(value: self.$viewModel.standup.duration.seconds, in: 5...30, step: 1) {
                         Text("Length")
                     }
                     Spacer()
-                    Text(self.standup.duration.formatted(.units()))
+                    Text(self.viewModel.standup.duration.formatted(.units()))
                 }
-                ThemePicker(selection: self.$standup.theme)
+                ThemePicker(selection: self.$viewModel.standup.theme)
             } header: {
                 Text("Standup Info")
             }
             Section {
-                ForEach(self.$standup.attendees) { $attendee in
+                ForEach(self.$viewModel.standup.attendees) { $attendee in
                     TextField("Name", text: $attendee.name)
                         .focused(self.$focus, equals: .attendee(attendee.id))
                 }
                 .onDelete { indices in
-                    self.standup.attendees.remove(atOffsets: indices)
-                    if self.standup.attendees.isEmpty {
-                        self.standup.attendees.append(
-                            Attendee(id: Attendee.ID(UUID()), name: "")
-                        )
-                    }
-                    self.focus = .attendee(self.standup.attendees[indices.first!].id)
+                    self.viewModel.deleteAttendee(atOffsets: indices)
                 }
-                Button("New attendee") {
-                    let attendee = Attendee(id: Attendee.ID(UUID()), name: "")
-                    self.standup.attendees.append(attendee)
-                    self.focus = .attendee(attendee.id)
-                }
+                Button("New attendee", action: self.viewModel.newAttendeeButtonTapped)
             } header: {
                 Text("Attendees")
             }
         }
-        .onAppear {
-            if self.standup.attendees.isEmpty {
-                self.standup.attendees.append(
-                    Attendee(id: Attendee.ID(UUID()), name: "")
-                )
-            }
-            self.focus = .title
-        }
+        .bind(self.$viewModel.focus, to: self.$focus)
     }
 }
 
@@ -89,7 +108,5 @@ extension Duration {
 }
 
 #Preview {
-    WithState(initialValue: Standup.mock) { $standup in
-        EditStandupView(standup: $standup)
-    }
+    EditStandupView(viewModel: EditStandupViewModel(standup: .mock))
 }

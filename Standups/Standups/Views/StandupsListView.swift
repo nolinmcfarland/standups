@@ -37,9 +37,9 @@ struct StandupsListView: View {
             .sheet(
                 unwrapping: self.$viewModel.destination,
                 case: /StandupsListViewModel.Destination.add
-            ) { $standup in
+            ) { $viewModel in
                 NavigationStack {
-                    EditStandupView(standup: $standup)
+                    EditStandupView(viewModel: viewModel)
                         .navigationTitle("New Standup")
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction) {

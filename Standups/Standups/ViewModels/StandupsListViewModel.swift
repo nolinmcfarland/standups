@@ -12,7 +12,7 @@ final class StandupsListViewModel: ObservableObject {
     @Published var standups: [Standup]
 
     enum Destination {
-        case add(Standup)
+        case add(EditStandupViewModel)
     }
 
     init(
@@ -24,7 +24,9 @@ final class StandupsListViewModel: ObservableObject {
     }
 
     func addStandupButtonTapped() {
-        self.destination = .add(Standup(id: Standup.ID(UUID())))
+        self.destination = .add(
+            EditStandupViewModel(standup: Standup(id: Standup.ID(UUID())))
+        )
     }
 
     func dismissAddStandupButtonTapped() {
@@ -34,8 +36,9 @@ final class StandupsListViewModel: ObservableObject {
     func confirmAddStandupButtonTapped() {
         defer { self.destination = nil }
 
-        guard case var .add(standup) = self.destination
+        guard case let .add(editStandupViewModel) = self.destination
         else { return }
+        var standup = editStandupViewModel.standup
 
         standup.attendees.removeAll {
             $0.name.allSatisfy(\.isWhitespace)
