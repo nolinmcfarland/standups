@@ -21,6 +21,7 @@
 		5C04AA822AC1B09C0007DA81 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5C04AA812AC1B09C0007DA81 /* SwiftUINavigation */; };
 		5C04AA842AC1B1F40007DA81 /* EditStandupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */; };
 		5C2C39162AC2450900134E1C /* EditStandupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2C39152AC2450900134E1C /* EditStandupViewModel.swift */; };
+		5C9B3B9B2AC27B4B0034BA0B /* EditStandupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B3B9A2AC27B4B0034BA0B /* EditStandupViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsListViewModel.swift; sourceTree = "<group>"; };
 		5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupView.swift; sourceTree = "<group>"; };
 		5C2C39152AC2450900134E1C /* EditStandupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupViewModel.swift; sourceTree = "<group>"; };
+		5C9B3B9A2AC27B4B0034BA0B /* EditStandupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5C04AA542AC112B70007DA81 /* StandupsTests.swift */,
+				5C9B3B9A2AC27B4B0034BA0B /* EditStandupViewModelTests.swift */,
 			);
 			path = StandupsTests;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C9B3B9B2AC27B4B0034BA0B /* EditStandupViewModelTests.swift in Sources */,
 				5C04AA552AC112B70007DA81 /* StandupsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
