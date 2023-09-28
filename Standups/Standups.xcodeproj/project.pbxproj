@@ -21,6 +21,8 @@
 		5C04AA822AC1B09C0007DA81 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5C04AA812AC1B09C0007DA81 /* SwiftUINavigation */; };
 		5C04AA842AC1B1F40007DA81 /* EditStandupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */; };
 		5C2C39162AC2450900134E1C /* EditStandupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2C39152AC2450900134E1C /* EditStandupViewModel.swift */; };
+		5C832B722AC4F75C00486EFC /* StandupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C832B712AC4F75C00486EFC /* StandupDetailsView.swift */; };
+		5C832B742AC4F7E900486EFC /* StandupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C832B732AC4F7E900486EFC /* StandupDetailsViewModel.swift */; };
 		5C9B3B9B2AC27B4B0034BA0B /* EditStandupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B3B9A2AC27B4B0034BA0B /* EditStandupViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsListViewModel.swift; sourceTree = "<group>"; };
 		5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupView.swift; sourceTree = "<group>"; };
 		5C2C39152AC2450900134E1C /* EditStandupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupViewModel.swift; sourceTree = "<group>"; };
+		5C832B712AC4F75C00486EFC /* StandupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupDetailsView.swift; sourceTree = "<group>"; };
+		5C832B732AC4F7E900486EFC /* StandupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupDetailsViewModel.swift; sourceTree = "<group>"; };
 		5C9B3B9A2AC27B4B0034BA0B /* EditStandupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStandupViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,7 @@
 			children = (
 				5C04AA6D2AC1138B0007DA81 /* StandupsListView.swift */,
 				5C04AA832AC1B1F40007DA81 /* EditStandupView.swift */,
+				5C832B712AC4F75C00486EFC /* StandupDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			children = (
 				5C04AA7E2AC1ACE00007DA81 /* StandupsListViewModel.swift */,
 				5C2C39152AC2450900134E1C /* EditStandupViewModel.swift */,
+				5C832B732AC4F7E900486EFC /* StandupDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,7 +267,9 @@
 				5C04AA792AC11BEF0007DA81 /* Meeting.swift in Sources */,
 				5C04AA442AC112B60007DA81 /* StandupsApp.swift in Sources */,
 				5C04AA7F2AC1ACE00007DA81 /* StandupsListViewModel.swift in Sources */,
+				5C832B722AC4F75C00486EFC /* StandupDetailsView.swift in Sources */,
 				5C04AA6E2AC1138B0007DA81 /* StandupsListView.swift in Sources */,
+				5C832B742AC4F7E900486EFC /* StandupDetailsViewModel.swift in Sources */,
 				5C04AA7B2AC11C050007DA81 /* Theme.swift in Sources */,
 				5C04AA722AC115180007DA81 /* Standup.swift in Sources */,
 				5C04AA772AC11BDE0007DA81 /* Attendee.swift in Sources */,
