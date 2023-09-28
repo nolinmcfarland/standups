@@ -15,17 +15,21 @@ struct StandupsListView: View {
         NavigationStack {
             List {
                 ForEach(self.viewModel.standups) { standup in
-                    CardView(standup: standup)
-                        .listRowBackground(
-                            standup.theme.mainColor
-                                .overlay(
-                                    LinearGradient(
-                                        colors: [.white.opacity(0.3), .clear],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
+                    Button {
+                        self.viewModel.standupTapped(standup: standup)
+                    } label: {
+                        CardView(standup: standup)
+                    }
+                    .listRowBackground(
+                        standup.theme.mainColor
+                            .overlay(
+                                LinearGradient(
+                                    colors: [.white.opacity(0.3), .clear],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
                                 )
-                        )
+                            )
+                    )
                 }
             }
             .navigationTitle("Daily Standups")
@@ -55,6 +59,12 @@ struct StandupsListView: View {
                         }
                 }
             }
+            .navigationDestination(
+                unwrapping: self.$viewModel.destination,
+                case: /StandupsListViewModel.Destination.details
+            ) { $detailViewModel in
+                StandupDetailsView(viewModel: detailViewModel)
+            }
         }
     }
 }
@@ -68,7 +78,7 @@ struct CardView: View {
                 .font(.headline)
             Spacer()
             HStack {
-                Label("\(self.standup.attendees.count)", systemImage: "person.3")
+                Label("\(self.standup.attendees.count)", systemImage: "person.3.fill")
                 Spacer()
                 Label(self.standup.duration.formatted(.units()), systemImage: "clock")
                     .labelStyle(.trailingIcon)

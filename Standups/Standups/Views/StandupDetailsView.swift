@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUINavigation
 
 struct StandupDetailsView: View {
     @ObservedObject var viewModel: StandupDetailsViewModel
@@ -43,7 +44,7 @@ struct StandupDetailsView: View {
                 Section {
                     ForEach(self.viewModel.standup.meetings) { meeting in
                         Button {
-                            // ..
+                            self.viewModel.meetingTapped(meeting: meeting)
                         } label: {
                             HStack {
                                 Image(systemName: "calendar")
@@ -53,7 +54,7 @@ struct StandupDetailsView: View {
                         }
                     }
                     .onDelete { indices in
-                        // ..
+                        self.viewModel.deleteMeetings(atOffsets: indices)
                     }
                 } header: {
                     Text("Past Meetings")
@@ -73,6 +74,12 @@ struct StandupDetailsView: View {
             }
         }
         .navigationTitle(self.viewModel.standup.title)
+        .navigationDestination(
+            unwrapping: self.$viewModel.destination,
+            case: /StandupDetailsViewModel.Destination.meeting
+        ) { $meeting in
+            MeetingView(meeting: meeting, standup: self.viewModel.standup)
+        }
     }
 }
 

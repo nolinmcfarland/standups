@@ -13,6 +13,7 @@ final class StandupsListViewModel: ObservableObject {
 
     enum Destination {
         case add(EditStandupViewModel)
+        case details(StandupDetailsViewModel)
     }
 
     init(
@@ -49,5 +50,9 @@ final class StandupsListViewModel: ObservableObject {
             )
         }
         self.standups.insert(standup, at: 0)
+    }
+    
+    func standupTapped(standup: Standup) {
+        self.destination = .details(StandupDetailsViewModel(standup: standup))
     }
 }
