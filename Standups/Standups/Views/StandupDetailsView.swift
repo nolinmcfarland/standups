@@ -62,9 +62,7 @@ struct StandupDetailsView: View {
             if !self.viewModel.standup.attendees.isEmpty {
                 Section {
                     ForEach(self.viewModel.standup.attendees) { attendee in
-                        HStack {
-                            Text(attendee.name)
-                        }
+                        Label(attendee.name, systemImage: "person.crop.circle.fill")
                     }
                 } header: {
                     Text("Attendees")
