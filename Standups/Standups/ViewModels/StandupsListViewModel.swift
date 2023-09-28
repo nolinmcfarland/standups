@@ -5,14 +5,17 @@
 //  Created by Nolin McFarland on 9/25/23.
 //
 
+import Combine
 import Foundation
 import SwiftUI
 
 final class StandupsListViewModel: ObservableObject {
     @Published var destination: Destination? {
-        didSet { self.bindDestinationAction() }
+        didSet { self.bind() }
     }
     @Published var standups: [Standup]
+    
+    private var destinationCancellable: AnyCancellable?
 
     enum Destination {
         case add(EditStandupViewModel)
@@ -25,7 +28,7 @@ final class StandupsListViewModel: ObservableObject {
     ) {
         self.destination = destination
         self.standups = standups
-        self.bindDestinationAction()
+        self.bind()
     }
 
     func addStandupButtonTapped() {
@@ -60,7 +63,7 @@ final class StandupsListViewModel: ObservableObject {
         self.destination = .details(StandupDetailsViewModel(standup: standup))
     }
     
-    private func bindDestinationAction() {
+    private func bind() {
         switch self.destination {
         case .details(let standupDetailsViewModel):
             standupDetailsViewModel.onConfirmDeletion = { [weak self, id = standupDetailsViewModel.standup.id] in
@@ -69,6 +72,16 @@ final class StandupsListViewModel: ObservableObject {
                     self.standups.removeAll { $0.id == id }
                     self.destination = nil
                 }
+                self.destinationCancellable = standupDetailsViewModel.$standup
+                    .sink { [weak self] standup in
+                        guard
+                            let self,
+                            let index = self.standups.firstIndex(where: { $0.id == standup.id })
+                        else {
+                            return
+                        }
+                        self.standups[index] = standup
+                    }
             }
         case .add, .none:
             break

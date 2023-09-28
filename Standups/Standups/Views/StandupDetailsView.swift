@@ -68,10 +68,14 @@ struct StandupDetailsView: View {
                 } header: {
                     Text("Attendees")
                 }
-                Button("Delete", role: .destructive, action: self.viewModel.deleteButtonTapped)
             }
+            Button("Delete", role: .destructive, action: self.viewModel.deleteButtonTapped)
+                .frame(maxWidth: .infinity)
         }
         .navigationTitle(self.viewModel.standup.title)
+        .toolbar {
+            Button("Edit", action: self.viewModel.editButtonTapped)
+        }
         .navigationDestination(
             unwrapping: self.$viewModel.destination,
             case: /StandupDetailsViewModel.Destination.meeting
@@ -84,6 +88,22 @@ struct StandupDetailsView: View {
         ) { action in
             guard let action else { return }
             self.viewModel.alertButtonTapped(action: action)
+        }
+        .sheet(
+            unwrapping: self.$viewModel.destination,
+            case: /StandupDetailsViewModel.Destination.edit
+        ) { $editViewModel in
+            NavigationStack {
+                EditStandupView(viewModel: editViewModel)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel", action: self.viewModel.cancelEditButtonTapped)
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done", action: self.viewModel.doneEditingButtonTapped)
+                        }
+                    }
+            }
         }
     }
 }

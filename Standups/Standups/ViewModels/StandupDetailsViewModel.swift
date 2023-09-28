@@ -23,6 +23,7 @@ final class StandupDetailsViewModel: ObservableObject {
     
     enum Destination {
         case alert(AlertState<AlertAction>)
+        case edit(EditStandupViewModel)
         case meeting(Meeting)
     }
     
@@ -50,6 +51,20 @@ final class StandupDetailsViewModel: ObservableObject {
         switch action {
         case .confirmDeletion: self.onConfirmDeletion()
         }
+    }
+    
+    func editButtonTapped() {
+        self.destination = .edit(EditStandupViewModel(standup: self.standup))
+    }
+    
+    func cancelEditButtonTapped() {
+        self.destination = nil
+    }
+    
+    func doneEditingButtonTapped() {
+        guard case let .edit(viewModel) = self.destination else { return }
+        self.standup = viewModel.standup
+        self.destination = nil
     }
 }
 
