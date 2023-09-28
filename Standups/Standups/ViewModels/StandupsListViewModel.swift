@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class StandupsListViewModel: ObservableObject {
-    @Published var destination: Destination?
+    @Published var destination: Destination? {
+        didSet { self.bindDestinationAction() }
+    }
     @Published var standups: [Standup]
 
     enum Destination {
@@ -22,6 +25,7 @@ final class StandupsListViewModel: ObservableObject {
     ) {
         self.destination = destination
         self.standups = standups
+        self.bindDestinationAction()
     }
 
     func addStandupButtonTapped() {
@@ -54,5 +58,20 @@ final class StandupsListViewModel: ObservableObject {
     
     func standupTapped(standup: Standup) {
         self.destination = .details(StandupDetailsViewModel(standup: standup))
+    }
+    
+    private func bindDestinationAction() {
+        switch self.destination {
+        case .details(let standupDetailsViewModel):
+            standupDetailsViewModel.onConfirmDeletion = { [weak self, id = standupDetailsViewModel.standup.id] in
+                guard let self else { return }
+                withAnimation {
+                    self.standups.removeAll { $0.id == id }
+                    self.destination = nil
+                }
+            }
+        case .add, .none:
+            break
+        }
     }
 }

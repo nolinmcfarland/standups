@@ -11,7 +11,17 @@ import SwiftUI
 struct StandupsApp: App {
     var body: some Scene {
         WindowGroup {
-            StandupsListView(viewModel: StandupsListViewModel())
+            StandupsListView(
+                viewModel: StandupsListViewModel(
+//                    destination: .details(
+//                        StandupDetailsViewModel(
+//                            destination: .alert(.delete),
+//                            standup: .mock
+//                        )
+//                    ),
+                    standups: [.mock]
+                )
+            )
         }
     }
 }

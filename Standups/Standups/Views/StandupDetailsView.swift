@@ -68,9 +68,7 @@ struct StandupDetailsView: View {
                 } header: {
                     Text("Attendees")
                 }
-                Button("Delete", role: .destructive) {
-                    // ..
-                }
+                Button("Delete", role: .destructive, action: self.viewModel.deleteButtonTapped)
             }
         }
         .navigationTitle(self.viewModel.standup.title)
@@ -79,6 +77,13 @@ struct StandupDetailsView: View {
             case: /StandupDetailsViewModel.Destination.meeting
         ) { $meeting in
             MeetingView(meeting: meeting, standup: self.viewModel.standup)
+        }
+        .alert(
+            unwrapping: self.$viewModel.destination,
+            case: /StandupDetailsViewModel.Destination.alert
+        ) { action in
+            guard let action else { return }
+            self.viewModel.alertButtonTapped(action: action)
         }
     }
 }
